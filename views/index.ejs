@@ -1,0 +1,28 @@
+<%- include ("partials/header.ejs") %>
+<%- include ("partials/homenavbar.ejs") %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="jumbotron">
+            <h1 class="display-4">Olá, é um prazer te receber!</h1>
+            <p class="lead">Meu nome é Kaique e estou criando um blog através do conteúdo aprendido no curso do Guia do Programador.</p>
+            <hr class="my-4">
+            <p>Para a criação desse blog estão sendo aplicadas as seguintes tecnologias: HTML, CSS, JS, Bootstrap, Node.js, Express e SQL.</p>
+            <a class="btn btn-primary btn-lg" href="https://guiadoprogramador.com/curso/formacao-node-js/" target="_blank" role="button">Leia mais</a>
+        </div>          
+        <hr>
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+                <div class="card-body">
+                    <a href="/<%= article.slug %>" class="btn btn-secondary">Ler artigo</a>
+                </div>
+            </div>
+            <br>
+        <% }) %>
+    </div>
+    
+</body>
+<%- include ("partials/footer.ejs") %>
