@@ -73,7 +73,7 @@ app.get("/category/:slug", (req, res) =>{
     }).then(category => {
         if(category != undefined){
             Category.findAll().then(categories =>{
-                res.render("index",{articles: category.articles});
+                res.render("index",{articles: category.articles, categories: categories});
             });
         }else{
             res.redirect("/");
