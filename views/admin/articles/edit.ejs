@@ -8,15 +8,22 @@
                 <h2>Edição de Artigos</h2>
             </div>
             <div class="card-body">
-                <form method="POST" action="/articles/save">
-                    <input class="form-control" type="text" name="title" placeholder="Defina o título do artigo">
+                <form method="POST" action="/articles/update">
+                    <input type="hidden" value="<%= article.id %>" name="id">
+                    <input class="form-control" type="text" name="title" placeholder="Defina o título do artigo" value="<%= article.title %>">
                     <br>
-                    <textarea class="form-control" name="body" id="article" placeholder="Escreva seu artigo aqui"></textarea>
+                    <textarea class="form-control" name="body" id="article" placeholder="Escreva seu artigo aqui"><%= article.body %></textarea>
                     <br>
                     <label>Categoria</label>
                     <select name="category" class="form-control">
                         <% categories.forEach((category) => { %>
-                            <option value="<%= category.id %>"><%= category.title %></option>
+
+                            <% if(category.id == article.categoryId) { %>
+                                <option value="<%= category.id %>" selected><%= category.title %></option>
+                            <% } else { %>
+                                <option value="<%= category.id %>"><%= category.title %></option>
+                            <% } %>
+                            
                         <% }) %>
                     </select>
                     <br>
@@ -35,7 +42,7 @@
 
 <script>
     tinymce.init({
-        language: "pt-BR",
+        language: "en",
         selector: "#article",
         // branding: false, #para remover que é oferecido por Tiny
         plugins: [
