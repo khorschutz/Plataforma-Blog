@@ -5,10 +5,12 @@ const connection = require("./database/database");
 // Categories and articles routes
 const categoriesController = require('./categories/categoriesController');
 const articlesController = require('./articles/articlesController');
+const usersController = require("./users/usersController");
 
 //Models
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const User = require("./users/User");
 
 //configurando view engine
 app.set("view engine", "ejs");
@@ -28,8 +30,9 @@ connection
 
 
 app.use("/", categoriesController);
-
 app.use("/", articlesController);
+app.use("/", usersController);
+
 
 app.get("/", (req, res) => {
     Article.findAll({
