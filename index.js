@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const connection = require("./database/database");
 
 // Categories and articles routes
@@ -12,8 +13,18 @@ const Article = require("./articles/Article");
 const Category = require("./categories/Category");
 const User = require("./users/User");
 
-//configurando view engine
+// view engine
 app.set("view engine", "ejs");
+
+//sessions
+app.use(session({
+    secret: "a1b2c3d4e5f6g7h8i9j10", 
+    cookie: {maxAge: 30000000},
+    resave: false,
+    saveUninitialized: false
+}))
+
+// static
 app.use(express.static("public"));
 
 app.use(express.urlencoded({extended: false}));
