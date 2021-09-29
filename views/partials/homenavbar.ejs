@@ -2,13 +2,19 @@
     <a class="navbar-brand" href="/">
         meuBlog;
     </a>
-
     <div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>            
+            <!--
             <% categories.forEach(category => { %>
                 <li class="nav-item"><a class="nav-link" href="/category/<%= category.slug %>"><%= category.title %></a></li>
             <% }) %>
+            -->
         </ul>
     </div>
+    <ul class="navbar-nav" style="margin-left: auto;">
+        <li class="nav-item">
+                <a href="/login" class="btn btn btn-secondary">Conectar</a>
+        </li>
+    </ul>
 </nav>      
